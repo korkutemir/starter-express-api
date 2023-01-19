@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
 var port=process.env.PORT || 3000;
+var path=require('path');
 
-//app.use(express.static(path.join(__dirname, "js")));
+app.use(express.static(path.join(__dirname, "js")));
 
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 app.get('/', function (req, res) {
 
