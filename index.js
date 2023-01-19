@@ -8,7 +8,7 @@ app.get('/', function (req, res) {
 
   //res.send('Merhaba Express');
 //  res.send('<h1>Merhaba Express</h1>');
-  res.sendFile( __dirname + "/" + "earth.html");
+  res.sendFile( __dirname + "/" + "index.html");
 
 });
 
