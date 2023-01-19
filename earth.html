@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"/>
+        <meta http-equiv="Access-Control-Allow-Origin" content="*">
+      <style>
+            body {
+                margin: 0;
+                cursor: url('eko(2).jpeg');
+            }
+          
+        </style>
+      
+    </head>
+    <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.145.0/three.min.js"></script>
+            <script src="C:\Program Files\nodejs2\node_modules\three\build\three.min.js"></script>   
+            <script src="https://mamboleoo.be/learnThree/demos/OBJLoader.js"></script>
+         <script>
+            
+            var scene=new THREE.Scene();
+            var camera=new THREE.PerspectiveCamera(100,window.innerWidth/window.innerHeight,0.1,2000);
+            var renderer=new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            var geometry = new THREE.SphereGeometry(25,30,30);
+            var material = new THREE.MeshNormalMaterial();
+      
+            
+ 
+                var cloud=new THREE.TextureLoader();
+
+                var cloudmath=new THREE.MeshBasicMaterial({map:cloud.load('https://192.168.1.33:8443/about')});
+                var cube = new THREE.Mesh( geometry, cloudmath );
+                cube.position.x=0;
+                cube.position.y=0;
+                cube.position.z=0;
+                scene.add(cube); 
+
+           
+            var geometry2 = new THREE.SphereGeometry(25,30,30);
+
+            var cloud2=new THREE.TextureLoader();
+
+                var cloudmath2=new THREE.MeshBasicMaterial({map:cloud2.load('earth.png')});
+                var cube2 = new THREE.Mesh( geometry2, cloudmath2 );
+                cube2.position.x -=700;
+                cube2.position.y -=500;
+                
+                scene.add(cube2); 
+
+                camera.position.x=35;
+            camera.position.y=36;
+            camera.position.z=33;
+
+     
+
+            window.setInterval(function() {
+                cube.rotation.y +=0.1;
+                cube2.rotation.y -=0.1;
+                renderer.render(scene,camera);
+            },500);
+
+
+            var back=new THREE.TextureLoader();
+            var backmath=back.load("earth.png");
+            scene.background=backmath;
+            camera.lookAt(scene.position);
+         
+
+            var obj=new THREE.OBJLoader();
+            obj.load('eko.obj',function(object) {
+                scene.add(object);
+            });
+
+            renderer.render(scene,camera);
+
+            window.onkeydown=function(event) {
+                if(event.key=="p") {
+                    location.reload();
+                }
+                else if(event.key=="a") {
+                    camera.position.x -=10;
+                }
+                else if(event.key=="w") {
+                    camera.position.z -=10;
+                }
+                else if(event.key=="s") {
+                    camera.position.z +=10;
+                }
+                else if(event.key=="d") {
+                    camera.position.y -=10;
+                }
+                else if(event.key=="b") {
+                    camera.position.x =100;
+                    camera.position.y =100;
+                    camera.position.z =50;
+                }
+        
+            renderer.render(scene,camera);
+            }
+
+            
+           
+          
+            renderer.render(scene,camera);
+         
+            </script>
+       
+</body>
+</html>
