@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
 
 });
 
-app.post('/vr', function (req, res) {
+app.get('/vr', function (req, res) {
 // res.send('Merhaba Express');
   res.sendFile( __dirname + "/" + "vr.html");
 });
