@@ -25,6 +25,11 @@ app.get('/megagen', function (req, res) {
   res.sendFile( __dirname + "/" + "index.html");
 });
 
+app.get('/products', function (req, res) {
+// res.send('Merhaba Express');
+  res.sendFile( __dirname + "/" + "products.html");
+});
+
 app.listen(port, function () {
   console.log('Sunucu çalışıyor...');
 });
